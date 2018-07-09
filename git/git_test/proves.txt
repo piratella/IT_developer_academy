@@ -1,0 +1,9 @@
+He fet el curs de Control Version for Everyone i un extra de Git per Linux perque crec que faltava una mica de teca per terminal. 
+
+Hop!
+
+pd. això és una modificació.
+
+pd2. aquesta es la modificació després de fer branch1.
+
+
