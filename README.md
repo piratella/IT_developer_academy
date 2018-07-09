@@ -1,1 +1,1 @@
-# IT_developer_academy
+This is a repository with almost all my theory, practices, exercices and challenges made for the bootcamp IT Academy Developer from Barcelona Activa (Barcelona). Date of init 14 May 2018. # IT_developer_academy
