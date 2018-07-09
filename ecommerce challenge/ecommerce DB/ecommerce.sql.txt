@@ -1,0 +1,115 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema EcommerceBD
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema EcommerceBD
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `EcommerceBD` DEFAULT CHARACTER SET utf8 ;
+USE `EcommerceBD` ;
+
+-- -----------------------------------------------------
+-- Table `EcommerceBD`.`Author`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `EcommerceBD`.`Author` (
+  `idAuthor` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `year` INT NULL,
+  `editorial` VARCHAR(45) NULL,
+  `ISBN` INT NOT NULL,
+  PRIMARY KEY (`idAuthor`),
+  UNIQUE INDEX `ISBN_UNIQUE` (`ISBN` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `EcommerceBD`.`Cart`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `EcommerceBD`.`Cart` (
+  `idCart` INT NOT NULL,
+  `Invoice_idInvoice` INT NOT NULL,
+  `Cartcol` VARCHAR(45) NULL,
+  PRIMARY KEY (`idCart`, `Invoice_idInvoice`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `EcommerceBD`.`Order`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `EcommerceBD`.`Order` (
+  `idOrder` INT NOT NULL,
+  `OrderDate` DATETIME NULL,
+  `ShippingDate` DATETIME NULL,
+  `Discount` INT NULL,
+  `Total Prize` INT NULL,
+  `Cart_idCart` INT NOT NULL,
+  PRIMARY KEY (`idOrder`),
+  INDEX `fk_Order_Cart1_idx` (`Cart_idCart` ASC),
+  CONSTRAINT `fk_Order_Cart1`
+    FOREIGN KEY (`Cart_idCart`)
+    REFERENCES `EcommerceBD`.`Cart` (`idCart`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `EcommerceBD`.`Customer`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `EcommerceBD`.`Customer` (
+  `idCustomer` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `address` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `Payment` VARCHAR(45) NOT NULL,
+  `Order_idOrder` INT NULL,
+  PRIMARY KEY (`idCustomer`),
+  INDEX `fk_Customer_Order1_idx` (`Order_idOrder` ASC),
+  CONSTRAINT `fk_Customer_Order1`
+    FOREIGN KEY (`Order_idOrder`)
+    REFERENCES `EcommerceBD`.`Order` (`idOrder`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `EcommerceBD`.`Book`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `EcommerceBD`.`Book` (
+  `idBook` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `author` VARCHAR(45) NOT NULL,
+  `category` VARCHAR(45) NULL,
+  `details` VARCHAR(45) NULL,
+  `description` VARCHAR(100) NULL,
+  `prize` INT NOT NULL,
+  `availiable` VARCHAR(45) NOT NULL,
+  `Author_idAuthor` INT NOT NULL,
+  `Customer_idCustomer` INT NULL,
+  PRIMARY KEY (`idBook`),
+  INDEX `fk_Book_Author1_idx` (`Author_idAuthor` ASC),
+  INDEX `fk_Book_Customer1_idx` (`Customer_idCustomer` ASC),
+  CONSTRAINT `fk_Book_Author1`
+    FOREIGN KEY (`Author_idAuthor`)
+    REFERENCES `EcommerceBD`.`Author` (`idAuthor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Book_Customer1`
+    FOREIGN KEY (`Customer_idCustomer`)
+    REFERENCES `EcommerceBD`.`Customer` (`idCustomer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
