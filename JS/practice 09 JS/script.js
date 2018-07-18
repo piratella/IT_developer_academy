@@ -66,7 +66,14 @@ factorial(5);
 write a function kebabToSnake() which takes a single kebab-cased string argument
 and returns the snake_cased version. So, replace "-"s with "_"s 
 
-kebabToSnake ("Hello-world"); // "hello_world" */
+kebabToSnake ("Hello-world");  "hello_world" */
 
 
+function kebabToSnake(str) {
+    //replace dash
+    var myString = str.replace(/-/g, "_");
+    // return string
+    return myString;
+}
 
+kebabToSnake("my-name-is-piratella")
