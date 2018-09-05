@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Practicing with ECMAScript 6: let keyword</title>
+    <style type="text/css">
+        section>div {
+            height: 100px;
+            width: 100px;
+            background-color: grey;
+            float: left;
+            margin: 3px;
+            cursor: pointer;
+        }
+    </style>
+    <!--we want to create a for loops that's going to create divs-->
+
+
+</head>
+
+<body>
+    <header>
+        <h1>Click on a box</h1>
+    </header>
+    <section></section>
+    <script type "text/babel">
+        for (let i = 0; i < 45; i++) {
+            var div = document.createElement('div');
+            div.onclick = function () {
+                alert("you clicked on a box #" + i);
+            }
+
+            document.getElementsByTagName('section')[0].appendChild(div);
+        }
+
+    </script>
+</body>
+
+</html>
