@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<script type="text/javascript">
-		function createEmail(firstName, surname, purchasePrice) {
-			var shipping = 5.95;
-			console.log(
-				`Hola ${firstName} ${surname}, Thanks for your purchase!
-					Total: ${purchasePrice}€
-					Shipping: ${shipping}€
-					Total: ${purchasePrice + shipping}€;
-				`	
-				);
-		}
+		var cat = new Map();
+		cat.set("nombre", "Mefistófeles");
+		cat.set("color", "negro");
+		cat.set("edad", "6");
 
-		createEmail("Cristina", "Fernández", 100);
-
+		console.log(cat);
+		console.log(cat.get("nombre"));
 	</script>
-	<title>Template Strings</title>
+	<title>Practicing Object Map()</title>
 </head>
+
 <body>
-</body>	
+</body>
+
 </html>
