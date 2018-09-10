@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		function createEmail(firstName, surname, purchasePrice) {
+			var shipping = 5.95;
+			console.log(
+				`Hola ${firstName} ${surname}, Thanks for your purchase!
+					Total: ${purchasePrice}€
+					Shipping: ${shipping}€
+					Total: ${purchasePrice + shipping}€;
+				`	
+				);
+		}
+
+		createEmail("Cristina", "Fernández", 100);
+
+	</script>
+	<title>Template Strings</title>
+</head>
+<body>
+</body>	
+</html>
