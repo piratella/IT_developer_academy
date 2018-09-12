@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        var cat = {
+
+            mew: function (times) {
+                console.log(Array(times + 1).join("mew"));
+            },
+
+            purr: function (times) {
+                console.log(Array(times + 1).join("purr"));
+            },
+
+            snore: function (times) {
+                console.log(Array(times + 1).join("snore"));
+            }
+
+        };
+
+        cat.mew(3);
+        cat.purr(2);
+        cat.snore(3);
+
+        var cat2 = {
+
+            mew(times) {
+                console.log("mew".repeat(times));
+            },
+
+            purr(times) {
+                console.log("purr".repeat(times));
+            },
+
+            snore(times) {
+                console.log("snore".repeat(times));
+            }
+        };
+
+        cat2.mew(3);
+        cat2.purr(2);
+        cat2.snore(3);
+
+
+
+
+    </script>
+    <title>enhancing object literals</title>
+</head>
+
+<body>
+</body>
+
+</html>
