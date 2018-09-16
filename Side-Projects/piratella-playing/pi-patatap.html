@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>pi is having fun</title>
+    <script type="text/javascript" src="js/paper-full.js"></script>    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/paperscript" canvas="myCanvas"> 
+
+
+        var keyData = {
+
+            q: {
+            sound: new Howl({
+              src: ['sound/bubbles.mp3']
+            }),
+            color: '#1abc9c'
+            },
+            w: {
+            sound: new Howl({
+              src: ['sound/boon.mp3']
+            }),
+            color: '#2ecc71'
+            },
+            e: {
+            sound: new Howl({
+              src: ['sound/bub.mp3']
+            }),
+            color: '#3498db'
+            },
+            r: {
+            sound: new Howl({
+              src: ['sound/cri.mp3']
+            }),
+            color: '#9b59b6'
+            },
+            t: {
+            sound: new Howl({
+              src: ['sound/decay.mp3']
+            }),
+            color: '#34495e'
+            },
+            y: {
+            sound: new Howl({
+              src: ['sound/here.mp3']
+            }),
+            color: '#16a085'
+            },
+            u: {
+            sound: new Howl({
+              src: ['sound/hic.mp3']
+            }),
+            color: '#27ae60'
+            },
+            i: {
+            sound: new Howl({
+              src: ['sound/martian.mp3']
+            }),
+            color: '#2980b9'
+            },
+            o: {
+            sound: new Howl({
+            src: ['sound/moon.mp3']
+            }),
+            color: '#8e44ad'
+            },
+            p: {
+            sound: new Howl({
+              src: ['sound/piu.mp3']
+            }),
+            color: '#2c3e50'
+            },
+            a: {
+            sound: new Howl({
+              src: ['sound/piuu.mp3']
+            }),
+            color: '#f1c40f'
+            },
+            s: {
+            sound: new Howl({
+              src: ['sound/r2.mp3']
+            }),
+            color: '#e67e22'
+            },
+            d: {
+            sound: new Howl({
+              src: ['sound/splits.mp3']
+            }),
+            color: '#e74c3c'
+            },
+            f: {
+            sound: new Howl({
+              src: ['sound/uh.mp3']
+            }),
+            color: '#95a5a6'
+            },
+            g: {
+            sound: new Howl({
+              src: ['sound/boon.mp3']
+            }),
+            color: '#f39c12'
+            },
+            h: {
+            sound: new Howl({
+              src: ['sound/bub.mp3']
+            }),
+            color: '#d35400'
+            },
+            j: {
+            sound: new Howl({
+              src: ['sound/bubbles.mp3']
+            }),
+            color: '#1abc9c'
+            },
+            k: {
+            sound: new Howl({
+              src: ['sound/cri.mp3']
+            }),
+            color: '#2ecc71'
+            },
+            l: {
+            sound: new Howl({
+              src: ['sound/decay.mp3']
+            }),
+            color: '#3498db'
+            },
+            z: {
+            sound: new Howl({
+              src: ['sound/here.mp3']
+            }),
+            color: '#9b59b6'
+            },
+            x: {
+            sound: new Howl({
+              src: ['sound/hic.mp3']
+            }),
+            color: '#34495e'
+            },
+            c: {
+            sound: new Howl({
+              src: ['sound/martian.mp3']
+            }),
+            color: '#16a085'
+            },
+            v: {
+            sound: new Howl({
+              src: ['sound/moon.mp3']
+            }),
+            color: '#27ae60'
+            },
+            b: {
+            sound: new Howl({
+              src: ['sound/piu.mp3']
+            }),
+            color: '#2980b9'
+            },
+            n: {
+            sound: new Howl({
+            src: ['sound/piuu.mp3']
+            }),
+            color: '#8e44ad'
+            },
+            m: {
+            sound: new Howl({
+              src: ['sound/r2.mp3']
+            }),
+            color: '#2c3e50'
+            }
+            }
+
+    
+    var circles = [];
+        //when we hit any key we add in a circle at a random point
+    function onKeyDown(event){
+        if (keyData[event.key]){
+    //we need to find the max width and height of the viewport and then generate the points randomly
+    //paperjs uses its own method
+
+        var maxPoint = new Point (view.size.width, view.size.height);
+        var randomPoint = Point.random();
+            
+    // and then multiply the two points together  
+        var point = maxPoint * randomPoint;
+    //the random circle will be 500 pixel radius
+        var newCircle = new Path.Circle(point,500)
+        newCircle.fillColor = keyData[event.key].color;
+        keyData[event.key].sound.play();
+    //we push this to a variable called circles
+        circles.push(newCircle);
+                               }      
+    }
+
+// every time a new frame is called, every animation frame we're looping through all circles
+//and for each one, we're adding one to the hue and multiplying the size of the scale by .9 (we shrinking it)
+
+function onFrame(event){
+
+
+// on every frame we loop through all circles in this array and we add one to each one hue every frame. 
+// paperjs has its own method to fill the color.
+for(var i=0; i<circles.length; i++) {
+    circles[i].fillColor.hue += 1;
+    circles[i].scale(.9)
+    
+}
+}
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+
+</html>

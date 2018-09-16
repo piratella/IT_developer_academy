@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+   var [zero,, second,,, fifth,,]= ["Barcelona", "Madrid", "Girona", "Zaragoza", "Málaga", "Lleida", "A Coruña", "Teruel"];
+   console.log(zero);
+   console.log(second);
+   console.log(fifth);
+
+var sandwich = {
+    name: "Bocadillo de calamares",
+    price: 6,
+    description: "Best sandwich in Madrid",
+    ingredients: ["bread", "calamares", "oil"]
+
+};
+console.log(sandwich.name);
+console.log(sandwich.description);
+
+
+var {name,description} = {
+    name: "Bocadillo de jamón",
+    price: 7,
+    description: "Best second sandwich in Madrid",
+    ingredients: ["bread", "jamón", "oil"]
+
+};
+console.log(name);
+console.log(description);
+
+
+var vacation = {
+    destination: "Koh Lanta",
+    travelers : 2,
+    activity : "sunbathing",
+    cost: 1000
+};
+
+function vacationMkt ({destination,activity}) {
+    return `Come to ${destination} and do some ${activity}`
+    }
+
+console.log(vacationMkt(vacation));
+
+    </script>
+    <title>Destructuring Assignment</title>
+</head>
+
+<body>
+</body>
+
+</html>
