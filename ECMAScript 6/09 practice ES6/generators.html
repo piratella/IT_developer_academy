@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+
+        function* director() {
+            yield "three";
+            yield "two";
+            yield "one"
+            yield "action";
+        }
+
+        var action = director();
+
+        console.log(action.next());
+        console.log(action.next());
+        console.log(action.next());
+        console.log(action.next());
+        console.log(action.next());
+
+        console.log(action.next().value); // three
+        console.log(action.next().value); // two
+        console.log(action.next().value); // one
+        console.log(action.next().value); // action
+        console.log(action.next().value);
+
+        //Generators are used when dealing with some sort asynchronous event.
+
+
+        function* eachItem(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                // we want to yield the item in the array, so the value of the item from that position
+                yield arr[i];
+            }
+        }
+
+        // we need to store the array in a variable that is going to call the eachItem function that is going to pass in a list of strings. This is storing all of our letters inside of eachItem generator.
+
+        var letters = eachItem(["a", "b", "c", "d", "e", "f", "g"]);
+
+        var abcs = setInterval(function () {
+            var letter = letters.next();
+            if (letter.done) {
+                clearInterval(abcs);
+                console.log("Now I know my ABC's");
+            } else {
+                console.log(letter.value);
+            }
+        },
+            500);
+
+    </script>
+    <title>generators</title>
+</head>
+
+<body>
+</body>
+
+</html>

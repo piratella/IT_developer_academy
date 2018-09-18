@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+
+       
+const id = Symbol();
+const courseInfo = {
+title: "ES6",
+topics: ["babel", "syntax", "functions"]
+};
+
+courseInfo[id] = 4242;
+console.log (courseInfo[id]); // 4242
+console.log (courseInfo); 
+
+
+
+
+const id2 = Symbol();
+const courseInfo2 = {
+title: "ES6",
+topics: ["babel", "syntax", "functions"],
+id : "Js Course"
+};
+
+courseInfo2[id2] = 4242;
+console.log (courseInfo2); 
+
+
+    </script>
+    <title>symbols</title>
+</head>
+
+<body>
+</body>
+
+</html>
